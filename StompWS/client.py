@@ -168,11 +168,13 @@ class StompWS:
     def _clean_up(self):
         self.connected = False
 
-    def send(self, destination, headers=None, body=None):
+    def send(self, destination, body=None, headers=None):
         if headers is None:
             headers = {}
         if body is None:
-            body = ''
+            body = ' '
+        if type(body) != str:
+            body = str(body)
         headers['destination'] = destination
         return self._transmit("SEND", headers, body)
 

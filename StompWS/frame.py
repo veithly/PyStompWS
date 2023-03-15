@@ -18,7 +18,7 @@ class Frame:
             del self.headers['content-length']
 
         for name in self.headers:
-            value = self.headers[name]
+            value = str(self.headers[name])
             lines.append("" + name + ":" + value)
 
         # if self.body is not None and not skipContentLength:
